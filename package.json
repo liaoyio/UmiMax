@@ -14,11 +14,16 @@
     "@ant-design/icons": "^5.2.6",
     "@ant-design/pro-components": "^2.6.43",
     "@umijs/max": "^4.0.88",
-    "antd": "^5.11.3"
+    "@unocss/cli": "^0.57.7",
+    "antd": "^5.11.3",
+    "unocss": "^0.57.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
+    "@unocss/transformer-attributify-jsx": "^0.57.7",
+    "@unocss/transformer-directives": "^0.57.7",
+    "@unocss/transformer-variant-group": "^0.57.7",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",

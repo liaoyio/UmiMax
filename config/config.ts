@@ -9,6 +9,10 @@ export default defineConfig({
   request: {},
   layout: { title: '@umijs/max' },
   routes,
-  npmClient: 'pnpm'
+  npmClient: 'pnpm',
+  plugins: [
+    require.resolve('@umijs/plugins/dist/unocss')
+  ],
+  unocss: { watch: ['src/**/*.tsx'] },
 });
 
