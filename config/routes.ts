@@ -24,4 +24,22 @@ export const routes: Router = [
     icon: 'TableOutlined',
     component: './Table',
   },
+  {
+    name: '客户管理',
+    path: '/customer-manage',
+    icon: 'UserOutlined',
+    component: './CustomerManage',
+    routes: [
+      {
+        name: '客户列表',
+        path: '/customer-manage/list',
+        component: './CustomerManage/List',
+      },
+      {
+        name: '客户认证',
+        path: '/customer-manage/auth',
+        component: './CustomerManage/Auth',
+      },
+    ],
+  },
 ]
