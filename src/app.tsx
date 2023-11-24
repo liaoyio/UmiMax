@@ -1,5 +1,6 @@
 import { GithubFilled, InfoCircleFilled, QuestionCircleFilled } from '@ant-design/icons';
-import { RunTimeLayoutConfig, RequestConfig } from '@umijs/max';
+import { RunTimeLayoutConfig } from '@umijs/max';
+import { theme } from 'antd';
 
 import AvatarDropdown from './components/AvatarDropdown';
 import logo from '@/assets/images/logo.svg';
@@ -37,44 +38,18 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   }
 }
 
-import { message } from 'antd';
+import { AntdConfig } from './types/config.type';
 
-export const request: RequestConfig = {
-  timeout: 1000,
-  errorConfig: {
-    errorHandler(error: any) {
-      const { response } = error;
-      if (response && response.status === 500) {
-        message.error('请求错误：服务器故障，请稍后再试');
-      }
+export const antd = (memo: AntdConfig) => {
+  memo.theme = {
+    token: {
+      colorPrimary: '#00b96b',
+      borderRadius: 4,
+      colorLink: '#03a05e',
     },
-    errorThrower() { },
-  },
-  // 请求拦截
-  requestInterceptors: [
-    (config: any) => {
-      let token = localStorage.getItem('token') || '';
-      if (token.startsWith('"')) {
-        token = JSON.parse(token);
-      }
-      if (token) {
-        config.headers.Authorization = 'Bearer ' + token;
-      }
-      return config;
-    },
-    (error: any) => {
-      return error;
-    },
-  ],
-  // 相应拦截
-  responseInterceptors: [
-    (response: any) => {
-      const { data, message } = response;
-      if (!data.success) {
-        message.error(message);
-      }
-      return response;
-    },
-  ],
+  }
+  memo.theme.algorithm = theme.darkAlgorithm;
+  memo.appConfig = { message: { maxCount: 3 } }
+
+  return memo;
 };
-
