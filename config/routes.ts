@@ -42,4 +42,10 @@ export const routes: Router = [
       },
     ],
   },
+  {
+    name: 'Login',
+    path: '/login',
+    component: './Login',
+    layout: false,
+  }
 ]
