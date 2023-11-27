@@ -17,18 +17,22 @@ export const routes: Router = [
     path: '/access',
     icon: 'LockOutlined',
     component: './Access',
+    hideInBreadcrumb: false,
+
   },
   {
     name: ' CRUD 示例',
     path: '/table',
     icon: 'TableOutlined',
     component: './Table',
+    hideInBreadcrumb: false,
   },
   {
     name: '客户管理',
     path: '/customer-manage',
     icon: 'UserOutlined',
     component: './CustomerManage',
+    hideInBreadcrumb: false,
     routes: [
       {
         name: '客户列表',

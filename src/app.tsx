@@ -5,6 +5,7 @@ import { theme } from 'antd';
 import AvatarDropdown from './components/AvatarDropdown';
 import logo from '@/assets/images/logo.svg';
 
+
 export async function getInitialState(): Promise<{ name: string; avatar?: string; }> {
   return {
     name: 'Yi',
@@ -13,6 +14,8 @@ export async function getInitialState(): Promise<{ name: string; avatar?: string
   };
 }
 
+
+import { PageContainer } from '@ant-design/pro-components';
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
     logo,
@@ -35,10 +38,16 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
         <GithubFilled key="GithubFilled" />,
       ];
     },
+    childrenRender: (dom) => {
+      return <>
+        <PageContainer title={false} content={dom} />
+      </>;
+    },
   }
 }
 
 import { AntdConfig } from './types/config.type';
+
 
 export const antd = (memo: AntdConfig) => {
   memo.theme = {
