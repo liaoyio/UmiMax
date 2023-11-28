@@ -1,12 +1,13 @@
-import { GithubFilled, InfoCircleFilled, QuestionCircleFilled } from '@ant-design/icons';
-import { RunTimeLayoutConfig } from '@umijs/max';
+import { RunTimeLayoutConfig, history } from '@umijs/max';
 import { theme } from 'antd';
 
-import AvatarDropdown from './components/AvatarDropdown';
 import logo from '@/assets/images/logo.svg';
+import { AvatarDropdown, CustomActionList, Footer } from './components/Layout';
 
-
-export async function getInitialState(): Promise<{ name: string; avatar?: string; }> {
+export async function getInitialState(): Promise<{
+  name: string;
+  avatar?: string;
+}> {
   return {
     name: 'Yi',
     avatar:
@@ -14,8 +15,8 @@ export async function getInitialState(): Promise<{ name: string; avatar?: string
   };
 }
 
-
 import { PageContainer } from '@ant-design/pro-components';
+
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
     logo,
@@ -26,28 +27,24 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     avatarProps: {
       src: initialState?.avatar || logo,
       size: 'default',
-      render: (props, dom) => <AvatarDropdown dom={dom} />
+      render: (_, dom) => <AvatarDropdown dom={dom} />,
     },
     /* 自定义操作列表 */
-    actionsRender: (props) => {
-      if (props.isMobile) return [];
-      if (typeof window === 'undefined') return [];
-      return [
-        <InfoCircleFilled key="InfoCircleFilled" />,
-        <QuestionCircleFilled key="QuestionCircleFilled" />,
-        <GithubFilled key="GithubFilled" />,
-      ];
+    actionsRender: CustomActionList,
+    footerRender: Footer,
+    childrenRender: (dom) => <PageContainer title={false} content={dom} />,
+    onPageChange: () => {
+      const { location } = history;
+      console.log({ location });
+      // 如果没有登录，重定向到 login
+      /*  if (!initialState && ROUTER_WHITE.indexOf(location.pathname) === -1) {
+         history.push(LOGIN_PATH);
+       } */
     },
-    childrenRender: (dom) => {
-      return <>
-        <PageContainer title={false} content={dom} />
-      </>;
-    },
-  }
-}
+  };
+};
 
 import { AntdConfig } from './types/config.type';
-
 
 export const antd = (memo: AntdConfig) => {
   memo.theme = {
@@ -56,9 +53,9 @@ export const antd = (memo: AntdConfig) => {
       borderRadius: 4,
       colorLink: '#03a05e',
     },
-  }
+  };
   memo.theme.algorithm = theme.darkAlgorithm;
-  memo.appConfig = { message: { maxCount: 3 } }
+  memo.appConfig = { message: { maxCount: 3 } };
 
   return memo;
 };

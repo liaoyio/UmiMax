@@ -1,5 +1,5 @@
-import { LogoutOutlined, UserOutlined } from "@ant-design/icons"
-import { Dropdown, MenuProps, message } from "antd"
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import { Dropdown, MenuProps, message } from 'antd';
 
 const items: MenuProps['items'] = [
   {
@@ -12,15 +12,12 @@ const items: MenuProps['items'] = [
     icon: <LogoutOutlined />,
     label: '退出登录',
   },
-]
+];
 export default ({ dom }: any) => {
-
   const DropdownOnClick: MenuProps['onClick'] = ({ key }) => {
     message.info(`Click on item ${key}`);
   };
   return (
     <Dropdown menu={{ items: items, onClick: DropdownOnClick }}>{dom}</Dropdown>
-  )
-}
-
-
+  );
+};

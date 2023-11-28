@@ -2,11 +2,11 @@
   "private": true,
   "author": "liaoyi <2417276459@qq.com>",
   "scripts": {
-    "dev": "max dev",
     "build": "max build",
+    "dev": "max dev",
     "format": "prettier --cache --write .",
-    "prepare": "husky install",
     "postinstall": "max setup",
+    "prepare": "husky install",
     "setup": "max setup",
     "start": "npm run dev"
   },
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
+    "@umijs/plugins": "^4.0.88",
     "@unocss/transformer-attributify-jsx": "^0.57.7",
     "@unocss/transformer-directives": "^0.57.7",
     "@unocss/transformer-variant-group": "^0.57.7",
