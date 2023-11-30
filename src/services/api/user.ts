@@ -10,16 +10,6 @@ const api = {
 };
 
 /**
- * 获取网站信息
- * @constructor
- */
-export async function getUserInfo() {
-  return request<API.ResponseStructure<any>>(api.getUserInfoApi, {
-    method: 'get',
-  });
-}
-
-/**
  * 退出登录
  * @constructor
  */

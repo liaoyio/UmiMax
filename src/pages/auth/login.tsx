@@ -42,6 +42,7 @@ const Login: React.FC = () => {
   const { initialState, setInitialState } = useModel('@@initialState');
 
   const [loginType, setLoginType] = useState<USER.LoginType>('account');
+
   const handleSubmit = async (values: USER.UserLoginFrom) => {
     // 登录
     const msg = await UserLogin({ ...values, loginType });
