@@ -4,7 +4,7 @@ type Router = ReturnType<typeof defineConfig>['routes'];
 export const routes: Router = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/home',
   },
   {
     name: '首页',
@@ -13,12 +13,18 @@ export const routes: Router = [
     component: './Home',
   },
   {
+    name: '卡片列表',
+    path: '/card-list',
+    icon: 'TableOutlined',
+    component: './CardList',
+    hideInBreadcrumb: false,
+  },
+  {
     name: '权限演示',
     path: '/access',
     icon: 'LockOutlined',
     component: './Access',
     hideInBreadcrumb: false,
-
   },
   {
     name: ' CRUD 示例',
@@ -51,5 +57,5 @@ export const routes: Router = [
     path: '/login',
     component: './Login',
     layout: false,
-  }
-]
+  },
+];

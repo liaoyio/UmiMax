@@ -1,5 +1,7 @@
+import Access from './Access';
 import AvatarDropdown from './AvatarDropdown';
 import CustomActionList from './CustomActionList';
 import Footer from './Footer';
+import { clientRoutes } from './clientRoutes';
 
-export { AvatarDropdown, CustomActionList, Footer };
+export { Access, AvatarDropdown, CustomActionList, Footer, clientRoutes };

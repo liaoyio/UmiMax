@@ -19,6 +19,7 @@
     "unocss": "^0.57.7"
   },
   "devDependencies": {
+    "@types/mockjs": "^1.0.10",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
     "@umijs/plugins": "^4.0.88",
@@ -27,6 +28,7 @@
     "@unocss/transformer-variant-group": "^0.57.7",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
+    "mockjs": "^1.1.0",
     "prettier": "^3.1.0",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-packagejson": "^2.4.6",
