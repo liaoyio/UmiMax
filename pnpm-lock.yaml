@@ -49,6 +49,9 @@ devDependencies:
   '@unocss/transformer-variant-group':
     specifier: ^0.57.7
     version: 0.57.7
+  dayjs:
+    specifier: ^1.11.10
+    version: 1.11.10
   husky:
     specifier: ^8.0.3
     version: 8.0.3

@@ -27,6 +27,7 @@
     "@unocss/transformer-attributify-jsx": "^0.57.7",
     "@unocss/transformer-directives": "^0.57.7",
     "@unocss/transformer-variant-group": "^0.57.7",
+    "dayjs": "^1.11.10",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
     "mockjs": "^1.1.0",
