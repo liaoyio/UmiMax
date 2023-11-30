@@ -2,7 +2,7 @@ import { RunTimeLayoutConfig, history } from '@umijs/max';
 
 import logo from '@/assets/images/logo.svg';
 import { GetAdminInfo } from '@/services/admin';
-import { Access, AvatarDropdown, CustomActionList } from './components/Layout';
+import { Access, AvatarDropdown, CustomActionList } from './components/layout';
 
 export async function getInitialState(): Promise<initialStateType> {
   // 记录当前应用
@@ -100,7 +100,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   };
 };
 
-import { clientRoutes } from '@/components/Layout';
+import { clientRoutes } from '@/components/layout';
 export const patchClientRoutes = clientRoutes;
 
 import { AntdConfig } from './types/config.type';
