@@ -2,13 +2,7 @@ import { RunTimeLayoutConfig, history } from '@umijs/max';
 
 import logo from '@/assets/images/logo.svg';
 import { GetAdminInfo } from '@/services/admin';
-import { index } from '@/services/api';
-import {
-  Access,
-  AvatarDropdown,
-  CustomActionList,
-  Footer,
-} from './components/Layout';
+import { Access, AvatarDropdown, CustomActionList } from './components/Layout';
 
 export async function getInitialState(): Promise<initialStateType> {
   // 记录当前应用
@@ -35,32 +29,32 @@ export async function getInitialState(): Promise<initialStateType> {
     menus: [],
   };
   try {
-    let indexDate = await index();
-    data.webSetting = indexDate.data.web_setting;
-    data.menus = indexDate.data.menus;
-    if (location.pathname !== 'admin/login' && localStorage.getItem('token')) {
+    if (
+      location.pathname !== '/admin/login' &&
+      !localStorage.getItem('token')
+    ) {
+      history.push('/admin/login');
+      return data;
+    } else {
       let userInfo = await fetchAdminInfo();
       data.isLogin = true;
       data.isAccess = true;
       data.currentUser = userInfo.adminInfo;
       data.menus = userInfo.menus;
       data.access = userInfo.access;
+      return data;
     }
-    return data;
   } catch (e) {
     return data;
   }
 }
 
-// import { PageContainer } from '@ant-design/pro-components';
-// MenuDataItem
-import { PageLoading } from '@ant-design/pro-components';
-// import fixMenuItemIcon from "@/utils/menuDataRender";
+import fixMenuItemIcon from '@/utils/menuDataRender';
+import { PageLoading, type MenuDataItem } from '@ant-design/pro-components';
 
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
     logo,
-
     title: 'Hello Umi',
     layout: 'mix',
     /* layout 的头像设置，不同的 layout 放在不同的位置 */
@@ -78,15 +72,9 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
       },
     },
     /* 修复菜单图标不显示问题 */
-    // menuDataRender: (menusData: MenuDataItem[]) => fixMenuItemIcon(menusData),
+    menuDataRender: (menusData: MenuDataItem[]) => fixMenuItemIcon(menusData),
     /* 自定义操作列表 */
     actionsRender: CustomActionList,
-    footerRender: Footer,
-
-    rightRender: (initialState) => {
-      return <div>rightRender</div>;
-    },
-    // childrenRender: (dom) => <PageContainer title={false} content={dom} />,
     childrenRender: (children: any) => {
       if (initialState?.loading) return <PageLoading />;
       return <Access>{children}</Access>;

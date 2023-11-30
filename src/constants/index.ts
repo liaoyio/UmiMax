@@ -1,6 +1,6 @@
 export const DEFAULT_NAME = 'Umi Max';
 
-export const LOGIN_PATH = '/user/login';
+export const LOGIN_PATH = '/admin/login';
 
 export const ROUTER_WHITE = [
   '/user/login',
@@ -8,4 +8,4 @@ export const ROUTER_WHITE = [
   '/user/resetPassword',
 ];
 
-export const NOAUTHROUTER = ['/login', '/', '/home'];
+export const NOAUTHROUTER = ['/', '/home', '/admin/login'];

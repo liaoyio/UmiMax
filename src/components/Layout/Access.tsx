@@ -14,7 +14,7 @@ export default (props: { children: React.ReactNode }) => {
   useEffect(() => {
     let accessName = pathname.slice(1).replace(/\//g, '.');
     if (
-      initialState!.access.includes(accessName) ||
+      initialState?.access.includes(accessName) ||
       NOAUTHROUTER.includes(pathname)
     ) {
       setIsAccess(true);

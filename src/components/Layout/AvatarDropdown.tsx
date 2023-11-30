@@ -1,3 +1,4 @@
+import { LOGIN_PATH } from '@/constants';
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { Dropdown, MenuProps } from 'antd';
 
@@ -12,7 +13,7 @@ export default ({ dom }: any) => {
     localStorage.removeItem('userinfo');
     localStorage.removeItem('api');
     // location.href = '/login'
-    history.push('/login');
+    history.push(LOGIN_PATH);
   };
 
   const items: MenuProps['items'] = [

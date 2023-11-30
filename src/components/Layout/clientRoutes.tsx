@@ -9,9 +9,9 @@ const lazyLoad = (moduleName: string) => {
 const defaultRoutes = [
   {
     name: '登录',
-    path: '/login',
-    id: 'adminLogin',
-    element: lazyLoad('/Login'),
+    path: 'admin/login',
+    id: 'xxxxlogin',
+    element: lazyLoad('auth/login'),
     layout: false,
   },
   {
