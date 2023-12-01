@@ -67,7 +67,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     menu: {
       locale: false,
       request: async () => {
-        console.log('刷新菜单啦：', initialState!.menus);
+        // console.log('刷新菜单啦：', initialState!.menus);
         return initialState!.menus as any;
       },
     },
@@ -81,7 +81,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     },
     onPageChange: () => {
       const { location } = history;
-      console.log({ location });
+      // console.log({ location });
       /* if (initialState!.app === 'admin') {
         // 如果没有登录，重定向到 登录页面
         if (!initialState!.isLogin) {

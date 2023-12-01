@@ -5,8 +5,6 @@ import React, { useEffect, useState } from 'react';
 
 export default (props: { children: React.ReactNode }) => {
   const { initialState } = useModel('@@initialState');
-  console.log(initialState);
-
   const { pathname } = useLocation();
 
   const [isAccess, setIsAccess] = useState<boolean>(false);

@@ -29,5 +29,5 @@ export const clientRoutes: RuntimeConfig['patchClientRoutes'] = ({
   routes.unshift({ path: '/', element: <Navigate to="/home" replace /> });
 
   routes.push(...defaultRoutes);
-  console.log('1 ---------------> patchClientRoutes', routes);
+  // console.log('1 ---------------> patchClientRoutes', routes);
 };

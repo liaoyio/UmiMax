@@ -1,7 +1,7 @@
 import { defineMock } from '@umijs/max';
 
 export default defineMock({
-  'GET /mock/system/dictList': {
+  'GET /mock/api/system/dictList': {
     data: [
       {
         id: 12,

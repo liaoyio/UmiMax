@@ -5,7 +5,7 @@ const api = {
   getGroupRuleApi: '/mock/api/user/getGroupRule', /// 获取分组权限
   getRuleByGroupApi: '/mock/api/user/getRuleByGroup', // 通过分组获取权限
   getGroupPidApi: '/mock/api/user/group/getGroup', // 获取分组 父ID
-  getRulePidApi: '/mock/api/user/xxx', // 获取权限Pid
+  getRulePidApi: '/mock/api/user/getRulePid', // 获取权限Pid
 };
 
 /**
