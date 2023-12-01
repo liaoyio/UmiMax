@@ -1,4 +1,5 @@
 import { defineMock } from '@umijs/max';
+import mockjs from 'mockjs';
 export default defineMock({
   'GET /mock/user/info': {
     data: {
@@ -717,5 +718,97 @@ export default defineMock({
     status: 200,
     msg: 'ok',
     showType: 0,
+  },
+  'GET /mock/api/user/userMoneyLog/list': mockjs.mock({
+    data: {
+      total: 6,
+      per_page: 20,
+      current_page: 1,
+      last_page: 1,
+      'data|3-6': [
+        {
+          id: 1,
+          user_id: 2,
+          scene: '0',
+          money: '10.00',
+          describe: '测试余额变更 First',
+          create_time: '2023-10-18 12:46:09',
+          user: {
+            id: '@increment',
+            mobile: /^(?:(?:\+|00)86)?1[3-9]\d{9}$/,
+            username: '@first',
+            email: '@email',
+            password: '@guid',
+            nickname: '@cname',
+            avatar: 'https://t.mwm.moe/tx/',
+            description: '@cparagraph(2)',
+            'gender|0-1': 1,
+            birthday: '@date',
+            'group_id|1-12': 1,
+            money: '@integer(60, 10000)',
+            score: '@integer(60, 10000)',
+            motto: '@cparagraph(2)',
+            'status|1-2': 1,
+            create_time: '@date',
+            update_time: '@date',
+          },
+        },
+      ],
+    },
+    success: true,
+    status: 200,
+    msg: 'ok',
+    showType: 0,
+  }),
+  'GET /mock/api/user/vagueSearch': mockjs.mock({
+    data: {
+      'data|3-6': [
+        {
+          id: '@increment',
+          mobile: /^(?:(?:\+|00)86)?1[3-9]\d{9}$/,
+          username: '@first',
+          email: '@email',
+          password: '@guid',
+          nickname: '@cname',
+          avatar: 'https://t.mwm.moe/tx/',
+          description: '@cparagraph(2)',
+          'gender|0-1': 1,
+          birthday: '@date',
+          'group_id|1-12': 1,
+          money: '@integer(60, 10000)',
+          score: '@integer(60, 10000)',
+          motto: '@cparagraph(2)',
+          'status|1-2': 1,
+          create_time: '@date',
+          update_time: '@date',
+        },
+      ],
+      total: 4,
+      per_page: 10,
+      current_page: 1,
+      last_page: 1,
+    },
+    success: true,
+    status: 200,
+    msg: 'ok',
+    showType: 0,
+  }),
+  'POST /mock/api/user/upUserMoney': {
+    success: true,
+    msg: '更新成功',
+    showType: 1,
+    status: 200,
+  },
+  'POST /mock/api/user/userMoneyLog/add': {
+    success: true,
+    msg: '添加成功',
+    showType: 1,
+    status: 200,
+  },
+  'DELETE /mock/api/user/userMoneyLog/delete': {
+    success: true,
+    msg: '删除成功',
+    showType: 1,
+    status: 200,
   },
 });
