@@ -397,4 +397,11 @@ export default defineMock({
     msg: 'ok',
     showType: 0,
   },
+  'POST /mock/api/system/file/upload': {
+    data: [],
+    success: false,
+    status: 200,
+    msg: '',
+    showType: 2,
+  },
 });

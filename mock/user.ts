@@ -727,8 +727,8 @@ export default defineMock({
       last_page: 1,
       'data|3-6': [
         {
-          id: 1,
-          user_id: 2,
+          id: '@increment',
+          user_id: '@increment',
           scene: '0',
           money: '10.00',
           describe: '测试余额变更 First',

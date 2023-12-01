@@ -28,6 +28,7 @@
     "@unocss/transformer-directives": "^0.57.7",
     "@unocss/transformer-variant-group": "^0.57.7",
     "ahooks": "^3.7.8",
+    "antd-img-crop": "^4.18.0",
     "dayjs": "^1.11.10",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
