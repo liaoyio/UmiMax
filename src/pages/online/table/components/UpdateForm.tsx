@@ -9,7 +9,17 @@ import {
 import { Modal } from 'antd';
 import React from 'react';
 
-export interface FormValueType extends Partial<API.UserInfo> {
+interface UserInfo {
+  id?: string;
+  name?: string;
+  /** nick */
+  nickName?: string;
+  /** email */
+  email?: string;
+  gender?: 'MALE' | 'FEMALE';
+}
+
+export interface FormValueType extends Partial<UserInfo> {
   target?: string;
   template?: string;
   type?: string;
@@ -21,7 +31,7 @@ export interface UpdateFormProps {
   onCancel: (flag?: boolean, formVals?: FormValueType) => void;
   onSubmit: (values: FormValueType) => Promise<void>;
   updateModalVisible: boolean;
-  values: Partial<API.UserInfo>;
+  values: Partial<UserInfo>;
 }
 
 const UpdateForm: React.FC<UpdateFormProps> = (props) => (

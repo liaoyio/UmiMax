@@ -14,7 +14,7 @@ export const gitDict = () => {
 
 export const getSettingGroup = () => {
   return request<API.ResponseStructure<any>>(
-    '/admin.php/system.setting/querySettingGroup',
+    '/mock/api/setting/querySettingGroup',
     {
       method: 'get',
     },
@@ -23,7 +23,7 @@ export const getSettingGroup = () => {
 
 export const querySettingPid = () => {
   return request<API.ResponseStructure<any>>(
-    '/admin.php/system.setting/querySettingPid',
+    '/mock/api/setting/querySettingPid',
     {
       method: 'get',
     },
@@ -35,11 +35,8 @@ export const addGroup = (data: {
   title: string;
   pid?: number;
 }) => {
-  return request<API.ResponseStructure<any>>(
-    '/admin.php/system.setting/addGroup',
-    {
-      method: 'post',
-      data,
-    },
-  );
+  return request<API.ResponseStructure<any>>('/mock/api/setting/addGroup', {
+    method: 'post',
+    data,
+  });
 };

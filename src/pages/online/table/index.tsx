@@ -1,25 +1,41 @@
-import services from '@/services/demo';
 import {
   ActionType,
   FooterToolbar,
   PageContainer,
+  ProColumns,
   ProDescriptions,
   ProDescriptionsItemProps,
+  ProFormColumnsType,
   ProTable,
 } from '@ant-design/pro-components';
+
+type Columns<T> = ProFormColumnsType<T> & ProColumns<T>;
+
 import { Button, Divider, Drawer, message } from 'antd';
 import React, { useRef, useState } from 'react';
 import CreateForm from './components/CreateForm';
 import UpdateForm, { FormValueType } from './components/UpdateForm';
 
+import services from '@/services/demo';
+
 const { addUser, queryUserList, deleteUser, modifyUser } =
   services.UserController;
+
+interface IUserInfo {
+  id?: string;
+  name?: string;
+  /** nick */
+  nickName?: string;
+  /** email */
+  email?: string;
+  gender?: 'MALE' | 'FEMALE';
+}
 
 /**
  * 添加节点
  * @param fields
  */
-const handleAdd = async (fields: API.UserInfo) => {
+const handleAdd = async (fields: IUserInfo) => {
   const hide = message.loading('正在添加');
   try {
     await addUser({ ...fields });
@@ -65,7 +81,7 @@ const handleUpdate = async (fields: FormValueType) => {
  *  删除节点
  * @param selectedRows
  */
-const handleRemove = async (selectedRows: API.UserInfo[]) => {
+const handleRemove = async (selectedRows: IUserInfo[]) => {
   const hide = message.loading('正在删除');
   if (!selectedRows) return true;
   try {
@@ -83,15 +99,14 @@ const handleRemove = async (selectedRows: API.UserInfo[]) => {
 };
 
 const TableList: React.FC<unknown> = () => {
-  const [createModalVisible, handleModalVisible] = useState<boolean>(false);
-  const [updateModalVisible, handleUpdateModalVisible] =
-    useState<boolean>(false);
+  const [createModalVisible, handleModalVisible] = useState(false);
+  const [updateModalVisible, handleUpdateModalVisible] = useState(false);
   const [stepFormValues, setStepFormValues] = useState({});
   const actionRef = useRef<ActionType>();
-  const [row, setRow] = useState<API.UserInfo>();
-  const [selectedRowsState, setSelectedRows] = useState<API.UserInfo[]>([]);
+  const [row, setRow] = useState<IUserInfo>();
+  const [selectedRowsState, setSelectedRows] = useState<IUserInfo[]>([]);
 
-  const columns: ProDescriptionsItemProps<API.UserInfo>[] = [
+  const columns: ProDescriptionsItemProps<IUserInfo>[] = [
     {
       title: '名称',
       dataIndex: 'name',
@@ -146,7 +161,7 @@ const TableList: React.FC<unknown> = () => {
         title: 'CRUD 示例',
       }}
     >
-      <ProTable<API.UserInfo>
+      <ProTable<IUserInfo>
         headerTitle="查询表格"
         actionRef={actionRef}
         rowKey="id"
@@ -175,7 +190,7 @@ const TableList: React.FC<unknown> = () => {
             success,
           };
         }}
-        columns={columns}
+        columns={columns as any}
         rowSelection={{
           onChange: (_, selectedRows) => setSelectedRows(selectedRows),
         }}
@@ -206,7 +221,7 @@ const TableList: React.FC<unknown> = () => {
         onCancel={() => handleModalVisible(false)}
         modalVisible={createModalVisible}
       >
-        <ProTable<API.UserInfo, API.UserInfo>
+        <ProTable<IUserInfo>
           onSubmit={async (value) => {
             const success = await handleAdd(value);
             if (success) {
@@ -218,7 +233,7 @@ const TableList: React.FC<unknown> = () => {
           }}
           rowKey="id"
           type="form"
-          columns={columns}
+          columns={columns as any}
         />
       </CreateForm>
       {stepFormValues && Object.keys(stepFormValues).length ? (
@@ -251,7 +266,7 @@ const TableList: React.FC<unknown> = () => {
         closable={false}
       >
         {row?.name && (
-          <ProDescriptions<API.UserInfo>
+          <ProDescriptions<IUserInfo>
             column={2}
             title={row?.name}
             request={async () => ({

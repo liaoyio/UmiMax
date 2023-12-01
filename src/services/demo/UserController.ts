@@ -15,7 +15,7 @@ export async function queryUserList(
   },
   options?: { [key: string]: any },
 ) {
-  return request<API.Result_PageInfo_UserInfo__>('/api/v1/queryUserList', {
+  return request<any>('/api/v1/queryUserList', {
     method: 'GET',
     params: {
       ...params,
@@ -26,10 +26,16 @@ export async function queryUserList(
 
 /** 此处后端没有提供注释 POST /api/v1/user */
 export async function addUser(
-  body?: API.UserInfoVO,
+  body?: {
+    name?: string;
+    /** nick */
+    nickName?: string;
+    /** email */
+    email?: string;
+  },
   options?: { [key: string]: any },
 ) {
-  return request<API.Result_UserInfo_>('/api/v1/user', {
+  return request<any>('/api/v1/user', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -49,7 +55,7 @@ export async function getUserDetail(
   options?: { [key: string]: any },
 ) {
   const { userId: param0 } = params;
-  return request<API.Result_UserInfo_>(`/api/v1/user/${param0}`, {
+  return request<any>(`/api/v1/user/${param0}`, {
     method: 'GET',
     params: { ...params },
     ...(options || {}),
@@ -63,11 +69,17 @@ export async function modifyUser(
     /** userId */
     userId?: string;
   },
-  body?: API.UserInfoVO,
+  body?: {
+    name?: string;
+    /** nick */
+    nickName?: string;
+    /** email */
+    email?: string;
+  },
   options?: { [key: string]: any },
 ) {
   const { userId: param0 } = params;
-  return request<API.Result_UserInfo_>(`/api/v1/user/${param0}`, {
+  return request<any>(`/api/v1/user/${param0}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -88,7 +100,7 @@ export async function deleteUser(
   options?: { [key: string]: any },
 ) {
   const { userId: param0 } = params;
-  return request<API.Result_string_>(`/api/v1/user/${param0}`, {
+  return request<any>(`/api/v1/user/${param0}`, {
     method: 'DELETE',
     params: { ...params },
     ...(options || {}),
